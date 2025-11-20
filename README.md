@@ -14,3 +14,30 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+
+
+
+React App – Instructivo de Instalación
+
+Requisitos: - Node.js 16+ - npm o yarn
+
+1.  Clonar repositorio: git clone
+    <https://github.com/Magucero/EfiJSThomasPereyra> cd nombre-del-repo
+
+
+2.  Instalar dependencias: npm install
+
+3.  Iniciar aplicación: npm run dev
+
+La app se abrirá en: http://localhost:5173/
+
+4.  Variables de entorno (opcional): Crear archivo .env
+
+Ejemplo: VITE_API_URL=http://localhost:5000/api
+
+5.  Scripts: npm run dev – Servidor de desarrollo npm run build – Build
+    producción npm run preview – Previsualizar build
+6. clonar el siguiente repositorio donde contiene la api usada
+===> https://github.com/Magucero/blogsito
+
