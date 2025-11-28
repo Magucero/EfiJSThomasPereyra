@@ -4,6 +4,7 @@ import RegisterForm from "./components/RegisterForm";
 import LoginForm from "./components/LoginForm";
 import PostForm from "./components/PostForm";
 import Review from "./components/Review";
+import EditPost from "./components/EditPost";
 
 
 export default function App() {
@@ -14,6 +15,8 @@ export default function App() {
       <Route path="/login" element={<LoginForm/>} />
       <Route path="/posts" element={<PostForm/>} />
       <Route path="/review/:id" element={<Review/>} />
+      <Route path="/edit/:id" element={<EditPost/>} />
+
       
       
     </Routes>

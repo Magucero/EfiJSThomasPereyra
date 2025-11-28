@@ -8,20 +8,20 @@ export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [token, setToken] = useState(null)
 
-
     useEffect(() => {
         const storedToken = localStorage.getItem('token')
         if (storedToken) {
             try {
                 const decoded = jwtDecode(storedToken)
-                if (decoded.expires_delta * 1000 > Date.now()) {
+
+                if (decoded.exp * 1000 > Date.now()) {
                     setUser(decoded)
                     setToken(storedToken)
                 } else {
                     localStorage.removeItem("token")
                 }
             } catch (error) {
-                console.error("token invalido", error)
+                console.error("Token inválido", error)
                 localStorage.removeItem("token")
             }
         }
@@ -29,29 +29,36 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const response = await fetch('http://localhost:5000/login', {
+            const response = await fetch('http://localhost:5000/api/login', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password })
             })
-            if (!response.ok) return toast.error("Credenciales incorrectas")
+
+            if (!response.ok) {
+                toast.error("Credenciales incorrectas")
+                return false
+            }
 
             const data = await response.json()
             const jwtToken = data.access_token
 
-
-
-            if (!jwtToken) return toast.error("No se recibio el token")
+            if (!jwtToken) {
+                toast.error("No se recibió el token")
+                return false
+            }
 
             localStorage.setItem('token', jwtToken)
+
             const decoded = jwtDecode(jwtToken)
             setUser(decoded)
             setToken(jwtToken)
 
-            toast.success('Inicio de sesion exitoso')
+            toast.success('Inicio de sesión exitoso')
             return true
         } catch (error) {
-            toast.error("Hubo un error al iniciar sesion", error.message)
+            console.error(error)
+            toast.error("Hubo un error al iniciar sesión")
             return false
         }
     }
@@ -61,5 +68,4 @@ export const AuthProvider = ({ children }) => {
             {children}
         </AuthContext.Provider>
     )
-
 }
