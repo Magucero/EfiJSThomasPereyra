@@ -1,6 +1,20 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "../styles/Form.css";
+import Comments from "../components/Comments";
+
+
+// ------------------------------------------------------------
+// 🔓 Función para decodificar el token JWT
+// ------------------------------------------------------------
+function decodeToken(token) {
+    try {
+        const payload = token.split(".")[1];
+        return JSON.parse(atob(payload));
+    } catch (e) {
+        return null;
+    }
+}
 
 export default function Review() {
     const { id } = useParams();
@@ -16,6 +30,10 @@ export default function Review() {
         content: ""
     });
 
+    const token = localStorage.getItem("token");
+    const user = token ? decodeToken(token) : null;
+
+    // Obtener POST
     useEffect(() => {
         const fetchPost = async () => {
             try {
@@ -28,14 +46,15 @@ export default function Review() {
                 setLoading(false);
             }
         };
-
         fetchPost();
     }, [id]);
 
+    // Permisos → ¿Puede editar o eliminar?
+    const canEditOrDelete =
+        user &&
+        (user.role === "admin" || user.id === post?.author_id); // <--- usa el author_id del backend
 
-    // -----------------------------
-    //   VALIDAR FORMULARIO
-    // -----------------------------
+    // Validación
     const validate = () => {
         let newErrors = { title: "", content: "" };
         let valid = true;
@@ -54,21 +73,15 @@ export default function Review() {
         return valid;
     };
 
-
-    // -----------------------------
-    //   HANDLE EDIT (PUT)
-    // -----------------------------
     const handleEdit = async () => {
-        if (!validate()) return; // ❌ No envía si hay errores
-
-        const token = localStorage.getItem("token");
+        if (!validate()) return;
 
         try {
             const res = await fetch(`http://localhost:5000/api/posts/${id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
+                    Authorization: `Bearer ${token}`
                 },
                 body: JSON.stringify({
                     title: post.title,
@@ -92,20 +105,14 @@ export default function Review() {
         }
     };
 
-
-    // -----------------------------
-    //   HANDLE DELETE
-    // -----------------------------
     const handleDelete = async () => {
         if (!window.confirm("¿Seguro que querés eliminar este post?")) return;
-
-        const token = localStorage.getItem("token");
 
         try {
             const res = await fetch(`http://localhost:5000/api/posts/${id}`, {
                 method: "DELETE",
                 headers: {
-                    "Authorization": `Bearer ${token}`
+                    Authorization: `Bearer ${token}`
                 }
             });
 
@@ -125,6 +132,7 @@ export default function Review() {
     };
 
 
+    // Vista de carga / error
     if (loading) return <p className="form-container">Cargando post...</p>;
     if (!post) return <p className="form-container">Post no encontrado</p>;
 
@@ -134,12 +142,11 @@ export default function Review() {
 
             <div className="post-card">
 
-                {/* -------------------------
-                     MODO EDICIÓN
-                ------------------------- */}
+                {/* --------------------------------
+                      MODO EDICIÓN
+                -------------------------------- */}
                 {editing ? (
                     <>
-                        {/* TÍTULO */}
                         <input
                             className="form-input"
                             value={post.title}
@@ -151,7 +158,6 @@ export default function Review() {
                             <small className="error">{errors.title}</small>
                         )}
 
-                        {/* CONTENIDO */}
                         <textarea
                             className="form-textarea"
                             value={post.content}
@@ -181,35 +187,36 @@ export default function Review() {
                     </>
                 ) : (
                     <>
-                        {/* -------------------------
-                             MODO LECTURA
-                        ------------------------- */}
+                        {/* --------------------------------
+                              MODO LECTURA
+                        -------------------------------- */}
                         <h3 className="post-title">{post.title}</h3>
-
                         <p className="post-date">
                             Publicado: {new Date(post.date).toLocaleString()}
                         </p>
-
                         <p className="post-content">{post.content}</p>
-
                         <p className="post-author">
                             Autor: <strong>{post.author}</strong>
                         </p>
 
                         <div className="review-buttons">
-                            <button
-                                className="form-button"
-                                onClick={() => setEditing(true)}
-                            >
-                                Editar
-                            </button>
+                            {canEditOrDelete && (
+                                <>
+                                    <button
+                                        className="form-button"
+                                        onClick={() => setEditing(true)}
+                                    >
+                                        Editar
+                                    </button>
 
-                            <button
-                                className="form-button delete-button"
-                                onClick={handleDelete}
-                            >
-                                Eliminar
-                            </button>
+                                    <button
+                                        className="form-button delete-button"
+                                        onClick={handleDelete}
+                                    >
+                                        Eliminar
+                                    </button>
+                                </>
+                            )}
 
                             <button
                                 className="form-button secondary-button"
@@ -220,6 +227,13 @@ export default function Review() {
                         </div>
                     </>
                 )}
+
+                {/* --------------------------------------------------
+                        COMPONENTE DE COMENTARIOS (AUTOMÁTICO)
+                -------------------------------------------------- */}
+                <Comments postId={id} />
+
+
             </div>
         </div>
     );

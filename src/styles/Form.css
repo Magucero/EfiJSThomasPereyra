@@ -67,3 +67,6 @@ body{
     margin-bottom: 10px;
     display: block;
 }
+.comment {
+    color: #000;      /* texto negro */
+}
