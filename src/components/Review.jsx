@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import CommentList from "../components/CommentList";
+import CommentForm from "../components/CommentForm";
 import "../styles/Form.css";
 
 export default function Review() {
@@ -9,6 +11,8 @@ export default function Review() {
     const [post, setPost] = useState(null);
     const [loading, setLoading] = useState(true);
     const [editing, setEditing] = useState(false);
+    const [refreshComments, setRefreshComments] = useState(false);
+
 
     // Errores de validación
     const [errors, setErrors] = useState({
@@ -195,6 +199,7 @@ export default function Review() {
                         <p className="post-author">
                             Autor: <strong>{post.author}</strong>
                         </p>
+                        
 
                         <div className="review-buttons">
                             <button
@@ -218,6 +223,17 @@ export default function Review() {
                                 Volver
                             </button>
                         </div>
+                        
+                            {/* modo de renderizado dinamico */}
+                        <CommentForm
+                            postId={id}
+                            onCommentCreated={() => setRefreshComments(!refreshComments)}
+                        />
+
+                        <CommentList postId={id} refresh={refreshComments} />
+    
+
+
                     </>
                 )}
             </div>
