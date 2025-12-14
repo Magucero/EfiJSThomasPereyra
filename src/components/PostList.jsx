@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Form.css"   // usa los estilos compartidos
+import "../styles/Postlist.css"   // usa los estilos compartidos
 
 export default function PostList() {
     const [posts, setPosts] = useState([]);
