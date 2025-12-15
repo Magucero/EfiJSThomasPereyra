@@ -6,7 +6,7 @@ import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
-import "../styles/RegisterForm.css"
+import "../styles/loginForm.css"
 
 const validationSchema = Yup.object({
     email: Yup.string().email("Email inválido").required("El email es obligatorio"),
@@ -57,6 +57,12 @@ export default function LoginForm() {
                         <Button 
                             type='submit'
                             label={isSubmitting ? "Ingresando..." : "Iniciar Sesión"} 
+                        />
+                        <Button
+                            type="button"
+                            label="Cancelar"
+                            className="navbar-links"
+                            onClick={() => navigate("/")}
                         />
                     </Form>
                 )}

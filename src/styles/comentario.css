@@ -1,0 +1,33 @@
+/* =========================
+   FORMULARIO COMENTARIO
+========================= */
+
+.post-card h4 {
+    margin-bottom: 0.6rem;
+    font-size: 1rem;
+    color: #e5e7eb;
+    font-weight: 500;
+}
+
+/* Textarea ya definido, solo refuerzo spacing */
+.post-card .form-textarea {
+    margin-bottom: 0.5rem;
+}
+
+/* Botón comentar alineado a la derecha */
+.post-card .form-button {
+    align-self: flex-end;
+    margin-top: 0.4rem;
+}
+
+/* Disabled state */
+.form-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    filter: none;
+}
+
+/* Error ya consistente */
+.error {
+    margin-bottom: 0.3rem;
+}

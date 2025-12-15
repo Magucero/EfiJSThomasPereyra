@@ -1,12 +1,12 @@
 /* =========================
-   REGISTER
+   LOGIN / REGISTER
 ========================= */
 
 .register-container {
-    max-width: 440px;
+    max-width: 420px;
     margin: 3rem auto;
     padding: 1.8rem;
-    background-color: #111827;
+    background-color: #111827; /* fondo oscuro */
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
     color: #e5e7eb;
@@ -33,7 +33,7 @@
 .form-field {
     display: flex;
     flex-direction: column;
-    gap: 0.35rem;
+    gap: 0.3rem;
 }
 
 .form-field label {
@@ -41,10 +41,7 @@
     color: #9ca3af;
 }
 
-/* =========================
-   INPUTS (PrimeReact)
-========================= */
-
+/* PrimeReact inputs */
 .p-inputtext {
     background-color: #020617;
     border: 1px solid #1f2933;
@@ -60,35 +57,10 @@
 }
 
 /* =========================
-   SELECT (ROLE)
-========================= */
-
-.input-select {
-    background-color: #020617;
-    border: 1px solid #1f2933;
-    color: #e5e7eb;
-    border-radius: 8px;
-    padding: 0.55rem 0.7rem;
-    font-size: 0.9rem;
-}
-
-.input-select option {
-    background-color: #020617;
-    color: #e5e7eb;
-}
-
-.input-select:focus {
-    outline: none;
-    border-color: #6366f1;
-    box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.35);
-}
-
-/* =========================
    BOTÓN
 ========================= */
 
 .p-button {
-    margin-top: 0.5rem;
     background-color: #6366f1;
     border: none;
     border-radius: 8px;

@@ -1,0 +1,151 @@
+/* Card de cada post */
+.post-card {
+    background: #111827;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Hover sutil */
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* Título del post */
+.post-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #f9fafb;
+}
+
+/* Fecha */
+.post-date {
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+/* Botón reutilizado */
+.post-card .form-button {
+    align-self: flex-end;
+    margin-top: 0.5rem;
+}
+
+/* Loading */
+.form-container p {
+    color: #9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .post-card {
+        padding: 1.25rem;
+    }
+
+    .post-card .form-button {
+        width: 100%;
+    }
+}
+
+
+
+
+/* =========================
+   THEME VARIABLES
+   ========================= */
+body.dark-theme {
+    --bg-main: #020617;
+    --bg-card: #111827;
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --error: #f87171;
+}
+
+body.light-theme {
+    --bg-main: #f9fafb;
+    --bg-card: #ffffff;
+    --text-main: #111827;
+    --text-muted: #6b7280;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --error: #dc2626;
+}
+
+/* =========================
+   BASE
+   ========================= */
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* CONTENEDORES */
+.form-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+}
+
+/* TITULOS */
+.form-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.9rem;
+}
+
+/* CARD */
+.form-content,
+.post-card {
+    background: var(--bg-card);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+/* CAMPOS */
+.form-field label {
+    color: var(--text-main);
+}
+
+/* INPUTS PRIME */
+.p-inputtext,
+.p-inputtextarea {
+    background: transparent;
+    color: var(--text-main);
+    border-color: #374151;
+}
+
+.p-inputtext::placeholder,
+.p-inputtextarea::placeholder {
+    color: var(--text-muted);
+}
+
+.p-inputtext:focus,
+.p-inputtextarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.15rem rgba(99, 102, 241, 0.35);
+}
+
+/* BOTÓN */
+.form-button {
+    background: var(--primary);
+    border: none;
+}
+
+.form-button:hover {
+    background: var(--primary-hover);
+}
+
+/* ERROR */
+.error {
+    color: var(--error);
+}

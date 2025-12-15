@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "../styles/Form.css";
+import "../styles/comentList.css"
+
+
 
 export default function CommentList({ postId, refresh }) {
     const { id } = useParams(); // id del POST
@@ -120,7 +122,7 @@ export default function CommentList({ postId, refresh }) {
     if (loading) return <p className="form-container">Cargando comentarios...</p>;
 
     return (
-        <div className="form-container">
+        <div className="form-container-comentarios">
             <h3 className="comentarios">Comentarios</h3>
 
             {comments.length === 0 && (

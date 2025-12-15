@@ -1,15 +1,64 @@
+
 .home-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  gap: 2rem;
-  width: 100%;
-  background: linear-gradient(135deg, #a0c4ff, #caffbf);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem;
+    
+    color: #333;
+}
+
+.home-container h1 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
 }
 
 .home-buttons {
-  display: flex;
-  gap: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.private-section {
+    margin-top: 2.5rem;
+    width: 100%;
+    max-width: 500px;
+}
+
+.private-section > div {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.private-section h2 {
+    margin-bottom: 0.5rem;
+}
+
+.private-section p {
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+.private-section button {
+    margin: 0.25rem;
+}
+
+@media (max-width: 600px) {
+    .home-container h1 {
+        font-size: 2rem;
+    }
+
+    .home-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .home-buttons button {
+        width: 100%;
+    }
 }

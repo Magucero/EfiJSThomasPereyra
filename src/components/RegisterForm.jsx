@@ -85,7 +85,14 @@ export default function RegisterForm() {
 
 
 
-                        <Button type='submit' label={isSubmitting ? "Registrando..." : "Registrarse"} />
+                        <Button type='submit' label={isSubmitting ? "Registrando..." : "Registrarse"}    />
+                        <Button
+                            type="button"
+                            label="Cancelar"
+                            className="p-button-secondary"
+                            onClick={() => navigate("/")}
+                        />
+                        
                     </Form>
                 )}
             </Formik>
