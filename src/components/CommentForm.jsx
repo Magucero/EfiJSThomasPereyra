@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../styles/Form.css";
+import "../styles/comentario.css"
 
 export default function CommentForm({ postId, onCommentCreated }) {
     const [contenido, setContenido] = useState("");

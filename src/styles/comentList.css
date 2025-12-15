@@ -1,0 +1,130 @@
+/* =========================
+   CONTENEDOR COMENTARIOS
+========================= */
+
+.form-container-comentarios{
+    width: 100%;
+}
+.comentarios {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #e5e7eb;
+    border-bottom: 1px solid #374151;
+    padding-bottom: 0.4rem;
+}
+
+/* Reutiliza post-card pero con leve ajuste */
+.post-card {
+    background:red;
+    border: 1px solid #1f2933;
+    border-radius: 14px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(0,0,0,0.6);
+}
+
+/* =========================
+   TEXTO DEL COMENTARIO
+========================= */
+
+.post-content {
+    color: #d1d5db;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0.6rem;
+}
+
+.post-title {
+    font-size: 0.85rem;
+    color: #9ca3af;
+    margin-bottom: 0.2rem;
+}
+
+.post-date {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-bottom: 0.8rem;
+}
+
+/* =========================
+   TEXTAREA EDICIÓN
+========================= */
+
+.form-textarea {
+    width: 100%;
+    min-height: 90px;
+    resize: vertical;
+    background: #020617;
+    border: 1px solid #1f2937;
+    border-radius: 10px;
+    padding: 0.7rem;
+    color: #e5e7eb;
+    font-size: 0.9rem;
+}
+
+.form-textarea:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 1px rgba(99,102,241,0.4);
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+.review-buttons {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: flex-end;
+    margin-top: 0.6rem;
+}
+
+.form-button {
+    background: linear-gradient(135deg, #4f46e5, #4338ca);
+    border: none;
+    color: white;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.form-button:hover {
+    filter: brightness(1.15);
+}
+
+.secondary-button {
+    background: #1f2937;
+    color: #e5e7eb;
+}
+
+.secondary-button:hover {
+    background: #374151;
+}
+
+/* Delete */
+.delete-button {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+}
+
+.delete-button:hover {
+    filter: brightness(1.1);
+}
+
+/* =========================
+   ERROR
+========================= */
+
+.error {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.75rem;
+    color: #f87171;
+}

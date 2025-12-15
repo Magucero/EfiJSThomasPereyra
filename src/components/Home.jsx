@@ -2,21 +2,20 @@ import { Button } from "primereact/button";
 import { useNavigate } from "react-router-dom";
 import "../styles/Home.css";
 import { isAuthenticated } from "../utils/auth";
-import PostList from "./PostList";
 import RoleCircle from "../components/RoleCircle";
+import Navbar from "./Navbarr";
+
 
 export default function Home() {
     const navigate = useNavigate();
     const logged = isAuthenticated();
 
-    const handleLogout = () => {
-        localStorage.removeItem("token");
-        alert("Sesión cerrada");
-        navigate("/"); 
-    };
-
     return (
+        
         <div className="home-container">
+            {logged && (
+                <Navbar></Navbar>
+            )}
             <h1>Bienvenido</h1>
             <RoleCircle></RoleCircle>
 
@@ -40,13 +39,6 @@ export default function Home() {
                         <div>
                             <h2>Zona exclusiva de usuarios logueados</h2>
                             <p>Bienvenido, tienes acceso a contenido especial.</p>
-
-                                <Button
-                                    label="Salir"
-                                    className="p-button-danger"
-                                    onClick={handleLogout}
-                                />
-                                <Button label="Posts" onClick={() => navigate("/posts")} />
                                      
                         </div> 
                                     

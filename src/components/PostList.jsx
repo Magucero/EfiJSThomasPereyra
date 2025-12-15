@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Postlist.css"   // usa los estilos compartidos
+import "../styles/Postlist.css"
+import ThemeToggle from "../components/toggle";
 
 export default function PostList() {
     const [posts, setPosts] = useState([]);
@@ -26,15 +27,18 @@ export default function PostList() {
     if (loading) return <p className="form-container">Cargando publicaciones...</p>;
 
     return (
+        
         <div className="form-container">
             <h2 className="form-title">Posteos publicados</h2>
 
             {posts.map(post => (
                 <div key={post.id} className="post-card">
-                    <h3 className="post-title">{post.title}</h3>
+                    <strong><h3 className="post-title">{post.title}:</h3></strong>
+                    <h4 className="post-title"> {post.content}</h4>
+                    <h5 className="post-title">Autor: {post.author}</h5>
 
                     <p className="post-date">
-                        {new Date(post.date).toLocaleString()}
+                         Creado el {new Date(post.date).toLocaleString()}
                     </p>
 
                     <button
@@ -45,6 +49,7 @@ export default function PostList() {
                     </button>
                 </div>
             ))}
+            
         </div>
     );
 }

@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import CommentList from "../components/CommentList";
 import CommentForm from "../components/CommentForm";
-import "../styles/Form.css";
+import Navbar from "./Navbarr";
+import "../styles/review.css";
 
 export default function Review() {
     const { id } = useParams();
@@ -134,9 +135,11 @@ export default function Review() {
 
     return (
         <div className="form-container">
+            <Navbar></Navbar>
+
             <h2 className="form-title">Detalle del Post</h2>
 
-            <div className="post-card">
+            <div className="post-car">
 
                 {/* -------------------------
                      MODO EDICIÓN
@@ -188,6 +191,7 @@ export default function Review() {
                         {/* -------------------------
                              MODO LECTURA
                         ------------------------- */}
+                        <div className="contenedor-review">
                         <h3 className="post-title">{post.title}</h3>
 
                         <p className="post-date">
@@ -199,7 +203,7 @@ export default function Review() {
                         <p className="post-author">
                             Autor: <strong>{post.author}</strong>
                         </p>
-                        
+                        </div>
 
                         <div className="review-buttons">
                             <button
@@ -216,12 +220,6 @@ export default function Review() {
                                 Eliminar
                             </button>
 
-                            <button
-                                className="form-button secondary-button"
-                                onClick={() => navigate(-1)}
-                            >
-                                Volver
-                            </button>
                         </div>
                         
                             {/* modo de renderizado dinamico */}

@@ -4,8 +4,9 @@ import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
 import { InputTextarea } from "primereact/inputtextarea";
 import { toast } from "react-toastify";
-import "../styles/postForm.css"; // estilos unificados
+import "../styles/postForm.css"
 import PostList from "./PostList";
+import Navbar from "./Navbarr";
 
 const validationSchema = Yup.object({
     title: Yup.string()
@@ -45,6 +46,7 @@ export default function PostForm() {
 
     return (
         <div className="form-container">
+            <Navbar/>
             <h2 className="form-title">Crear nuevo post</h2>
 
             <Formik

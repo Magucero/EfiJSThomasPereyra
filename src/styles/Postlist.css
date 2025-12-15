@@ -1,86 +1,151 @@
-/* ================================
-   LISTA DE POSTS
-================================ */
-
-.form-container {
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
+/* Card de cada post */
+.post-card {
+    background: #111827;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+/* Hover sutil */
+.post-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* Título del post */
+.post-title {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #f9fafb;
+}
+
+/* Fecha */
+.post-date {
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+/* Botón reutilizado */
+.post-card .form-button {
+    align-self: flex-end;
+    margin-top: 0.5rem;
+}
+
+/* Loading */
+.form-container p {
+    color: #9ca3af;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .post-card {
+        padding: 1.25rem;
+    }
+
+    .post-card .form-button {
+        width: 100%;
+    }
+}
+
+
+
+
+/* =========================
+   THEME VARIABLES
+   ========================= */
+body.dark-theme {
+    --bg-main: #020617;
+    --bg-card: #111827;
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --error: #f87171;
+}
+
+body.light-theme {
+    --bg-main: #f9fafb;
+    --bg-card: #ffffff;
+    --text-main: #111827;
+    --text-muted: #6b7280;
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --error: #dc2626;
+}
+
+/* =========================
+   BASE
+   ========================= */
+body {
+    background: var(--bg-main);
+    color: var(--text-main);
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+/* CONTENEDORES */
+.form-container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+}
+
+/* TITULOS */
 .form-title {
     text-align: center;
-    margin-bottom: 24px;
-    font-size: 1.8rem;
-    color: #1f2933;
+    margin-bottom: 2rem;
+    font-size: 1.9rem;
 }
 
-/* Card de post */
+/* CARD */
+.form-content,
 .post-card {
-    background-color: #ffffff;
-    border: 1px solid #e5e7eb;
+    background: var(--bg-card);
     border-radius: 10px;
-    padding: 16px 18px;
-    margin-bottom: 16px;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    padding: 2rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
-.post-card:hover {
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
-    transform: translateY(-2px);
+/* CAMPOS */
+.form-field label {
+    color: var(--text-main);
 }
 
-.post-title {
-    font-size: 1.2rem;
-    margin-bottom: 6px;
-    color: #111827;
+/* INPUTS PRIME */
+.p-inputtext,
+.p-inputtextarea {
+    background: transparent;
+    color: var(--text-main);
+    border-color: #374151;
 }
 
-.post-date {
-    font-size: 0.85rem;
-    color: #6b7280;
-    margin-bottom: 12px;
+.p-inputtext::placeholder,
+.p-inputtextarea::placeholder {
+    color: var(--text-muted);
 }
 
-/* Botón chico */
+.p-inputtext:focus,
+.p-inputtextarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.15rem rgba(99, 102, 241, 0.35);
+}
+
+/* BOTÓN */
 .form-button {
-    padding: 6px 14px;
-    font-size: 0.85rem;
-    border-radius: 6px;
-    background-color: #2563eb;
-    color: white;
+    background: var(--primary);
     border: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
 .form-button:hover {
-    background-color: #1e40af;
-    transform: translateY(-1px);
-}
-/* ================================
-   BOTONES EDITAR / ELIMINAR
-================================ */
-
-.review-buttons {
-    display: flex;
-    justify-content: flex-start; /* ⬅ izquierda */
-    gap: 10px;
-    margin-top: 12px;
+    background: var(--primary-hover);
 }
 
-/* Botón eliminar más sutil */
-.delete-button {
-    background-color: #dc2626;
-}
-
-.delete-button:hover {
-    background-color: #b91c1c;
-}
-
-/* Botones compactos */
-.review-buttons .form-button {
-    padding: 5px 12px;
-    font-size: 0.8rem;
-    border-radius: 6px;
+/* ERROR */
+.error {
+    color: var(--error);
 }

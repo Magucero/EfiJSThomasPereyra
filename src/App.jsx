@@ -5,6 +5,7 @@ import LoginForm from "./components/LoginForm";
 import PostForm from "./components/PostForm";
 import Review from "./components/Review";
 import EditPost from "./components/EditPost";
+import ThemeToggle from "./components/toggle";
 
 
 export default function App() {
@@ -16,7 +17,6 @@ export default function App() {
       <Route path="/posts" element={<PostForm/>} />
       <Route path="/review/:id" element={<Review/>} />
       <Route path="/edit/:id" element={<EditPost/>} />
-
       
       
     </Routes>
